@@ -31,5 +31,5 @@ Links
 .. _trunkly-rss: https://github.com/mattdeboard/trunkly-rss
 .. _PDF-processor: https://github.com/mattdeboard/PDF-processor
 .. _pf_random: https://github.com/mattdeboard/pf_random
-.. _here: http://mattdeboard.net/2011/01/28/Taking-initiative-and-offering-assistance
+.. _here: http://mattdeboard.net/2010/12/27/Taking-initiative-and-offering-assistance
 .. _Trunk.ly: http://trunk.ly
