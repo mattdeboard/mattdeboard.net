@@ -1,0 +1,88 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+        position: absolute;
+	left: 50%;
+	width: 800px;
+	margin-left: -400px;
+}
+
+#header {
+	width:100%;
+	height:80px;
+	clear: both;
+	border-bottom: solid 4px #6E6E6E;
+}
+
+#menu {
+	width:100%;
+	height: 35px;
+        float:left;
+	clear: both;
+	background-color: #F0F0F0;
+}
+
+#content{
+	width: 90%;
+	float: left;
+	clear: both;
+	margin-left: 40px;
+}
+
+
+#footer{
+	width: 100%;
+	clear: both;
+	text-align: center;
+	background-color: #F0F0F0;
+        border-top: solid 4px #6E6E6E;
+
+}
+
+
+/*header*/
+.header a {
+        font: bold 30px 'Vollkorn', 'Georgia', serif;
+        line-height: 120px;
+	text-decoration: none;
+}
+
+/*menu*/
+.menu a { 
+	color: #6E6E6E;
+	font: bold 21px 'Vollkorn', 'Georgia', serif;
+	letter-spacing: -1px;
+}
+
+
+/*content text*/
+#main {
+	font: 20px 'Vollkorn', 'Georgia', serif;
+	letter-spacing: 1px;
+}
+
+/*content header*/
+h1{
+        font: bold 30px 'Vollkorn', 'Georgia', serif;
+}
+
+/*content links*/
+a {
+        color: #575757;
+	font: 20px 'Vollkorn', 'Georgia', serif;
+}
+
+/*main*/
+.tags {
+	font: 14px 'Vollkorn', 'Georgia', serif;
+}
+
+/*footer*/
+.foot {
+	color: #6E6E6E;
+	line-spacing: 2px;
+	font: italic 14px 'Vollkorn', 'Georgia', serif;
+}
