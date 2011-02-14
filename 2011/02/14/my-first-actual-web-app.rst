@@ -17,3 +17,12 @@ After nailing down storing bookmarks to the database, then came user registratio
 Since then, I've put in a few additional features, such as timestamps, tagging, RSS importing (a chance to reuse `some code`_ I'd written for another self-learning `project`_), editing and deleting. Thanks to that last item, I finally wrote some JavaScript, thanks to the JQuery library. It's not impressive code but it works, and enhances the UI (though in kind of a hacky fashion). 
 
 Yuk isn't done. It's really ugly, and there are some features on my back-of-a-napkin roadmap I'll be implementing this week. That being said I think I can start tightening my code up without it being "premature optimization." 
+
+.. _Yuk: http://yuk.mattdeboard.net
+.. _source: https://github.com/mattdeboard/Yuk
+.. _flask: http://flask.pocoo.org
+.. _django-registration: http://code.google.com/p/django-registration/
+.. _some code: https://github.com/mattdeboard/trunkly-rss
+.. _project: http://mattdeboard.net/2010/12/27/Taking-initiative-and-offering-assistance
+
+
