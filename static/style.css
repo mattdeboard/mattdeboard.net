@@ -14,7 +14,7 @@ body {
 	width:100%;
 	height:80px;
 	clear: both;
-	border-bottom: solid 4px #6E6E6E;
+	border-bottom: solid 4px #000000;
 }
 
 #menu {
@@ -22,26 +22,38 @@ body {
 	height: 35px;
         float:left;
 	clear: both;
-	background-color: #F0F0F0;
+	background-color: #f0f0f0;
 }
 
 #content{
-	width: 90%;
+	width: 550px;
 	float: left;
-	clear: both;
-	margin-left: 40px;
+	padding-top: 20px;
 }
 
+#side{
+	width: 250px;
+	height: 500px;
+	float: right;
+	background-color: #f0f0f0;
+}
 
 #footer{
 	width: 100%;
+	float: left;
 	clear: both;
 	text-align: center;
 	background-color: #F0F0F0;
-        border-top: solid 4px #6E6E6E;
+        border-top: solid 4px #000000;
 
 }
 
+ul {
+	color: #575757;
+	font: 14px 'Vollkorn', 'Georgia', serif;
+	list-style: #575757
+	list-style-type: square;
+}
 
 /*header*/
 .header a {
@@ -52,9 +64,10 @@ body {
 
 /*menu*/
 .menu a { 
-	color: #6E6E6E;
+	color: #575757;
 	font: bold 21px 'Vollkorn', 'Georgia', serif;
 	letter-spacing: -1px;
+	text-decoration: none;
 }
 
 
@@ -64,9 +77,19 @@ body {
 	letter-spacing: 1px;
 }
 
+/*side*/
+.side a {
+	color: #575757;
+	font: 14px 'Vollkorn', 'Georgia', serif;
+}
+	
 /*content header*/
 h1{
-        font: bold 30px 'Vollkorn', 'Georgia', serif;
+        font: bold 30px 'Rock Salt', 'Georgia', serif;
+}
+
+h2 {
+	font: bold 25px 'Rock Salt', 'Georgia', serif;
 }
 
 /*content links*/

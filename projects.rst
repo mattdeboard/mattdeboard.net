@@ -12,7 +12,7 @@ They are listed in chronological order with the most recent projects first.
 Links
 -----
 
-`Yuk`_: A pinboard clone I started explicitly to learn more about databases and get my feet wet with Django.
+`Yuk`_(`Live example`_): A pinboard clone I started explicitly to learn more about databases and get my feet wet with Django.
 
 `flask_rage`_: A simple text overlay I wrote just as a joke for some friends. I recently refactored the project for use with flask. This project taught me quite a lot about apache and nginx configs.
 
@@ -24,7 +24,7 @@ Links
 
 `pf_random`_: A forum-spamming script. This was acually the first fully functional thing I ever completed. 
 
-
+.. _Live example: http://yuk.mattdeboard.net
 .. _Yuk: https://github.com/mattdeboard/Yuk
 .. _flask_rage: http://mattdeboard.net/rage
 .. _Change: http://mattdeboard.net/change
