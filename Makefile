@@ -1,6 +1,8 @@
 build:
 	run-rstblog build
 
+index:
+	cp _build/index.html .
 serve:
 	run-rstblog serve
 

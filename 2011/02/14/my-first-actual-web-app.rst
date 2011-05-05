@@ -1,5 +1,6 @@
 public: yes
 tags: [flask, web, python]
+summary: My latest projects
 
 ============
 Latest work

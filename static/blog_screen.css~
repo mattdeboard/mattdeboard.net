@@ -1,0 +1,133 @@
+#header {
+	border-bottom: solid 4px #000000;
+}
+
+#header a {
+    font-family: 'Helvetica Neue', Helvetica, Arial, serf;
+    font-size: 50px;
+    font-style: bold;
+}
+
+#menu {
+	height: 35px;
+    float:left;
+	clear: both;
+	background-color: #f0f0f0;
+}
+
+#content{
+	float: left;
+	padding-top: 20px;
+}
+
+#footer{
+	float: left;
+	clear: both;
+	text-align: center;
+	background-color: #F0F0F0;
+    border-top: solid 4px #000000;
+
+}
+
+ul {
+	color: #575757;
+	font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+    font-size: 14px;
+    font-style: italic;
+	list-style: #575757;
+	list-style-type: square;
+}
+
+/*header*/
+.header a {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    font-style: bold;
+    line-height: 120px;
+	text-decoration: none;
+}
+
+/*menu*/
+#menu a { 
+	color: #575757;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 21px;
+    font-style: bold;
+	text-decoration: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#menu a:hover {
+    color: #24b200;
+    border-bottom: 1px dotted;
+}
+
+/*entries*/
+#entry {
+    font: 16px Times New Roman;
+}
+
+#entry .date {
+    font-style: italic;
+    font-size: 14px;
+}
+
+#entry a {
+    color: #24b200;
+    border-bottom: 1px dotted;
+}
+
+#entry a:hover {
+    color: #99FE80;
+    border-bottom: 1px solid;
+}
+
+/*entry title*/
+h1.title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 40px;
+    font-style: bold;
+    padding-bottom: 10px;
+}
+
+/*content text*/
+#main {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+	letter-spacing: 1px;
+}
+
+.detail a {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+	letter-spacing: 1px;
+    color: #0C7500;
+}
+
+.detail a:hover {
+    color: #99FE80;
+    border-bottom: 1px dotted;
+}
+
+.detail a:visited {
+    color: #24B200;
+}
+
+.detail .summary {
+    font-family: Times New Roman, Garamond, serif;
+    font-size: 18px;
+}
+
+/*side*/
+.side a {
+	color: #575757;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+	
+/*main*/
+.tags {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}

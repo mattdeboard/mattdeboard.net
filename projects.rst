@@ -12,20 +12,20 @@ They are listed in chronological order with the most recent projects first.
 Links
 -----
 
-`Yuk`_ (`Live example`_): A pinboard clone I started explicitly to learn more about databases and get my feet wet with Django.
+Yuk_ (github_): A pinboard clone I started explicitly to learn more about databases and get my feet wet with Django.
 
 `flask_rage`_: A simple text overlay I wrote just as a joke for some friends. I recently refactored the project for use with flask. This project taught me quite a lot about apache and nginx configs.
 
-`Change`_: A "make change out of this" project for my Computing I class. Obviously a canonical computer science project so I wanted to do something "cute" with it.
+Change_: A "make change out of this" project for my Computing I class. Obviously a canonical computer science project so I wanted to do something "cute" with it.
 
-`trunkly-rss`_: I wrote about this project `here`_. Visit `Trunk.ly`_.
+trunkly-rss_: I wrote about this project here_. Visit `Trunk.ly`_.
 
-`PDF-processor`_: A friend was doing some very routine work with PDFs for an internship. Wrote this to automate the work. Unfortunately he wasn't allowed to put it to use.
+PDF-processor_: A friend was doing some very routine work with PDFs for an internship. Wrote this to automate the work. Unfortunately he wasn't allowed to put it to use.
 
 `pf_random`_: A forum-spamming script. This was acually the first fully functional thing I ever completed. 
 
-.. _Live example: http://yuk.mattdeboard.net
-.. _Yuk: https://github.com/mattdeboard/Yuk
+.. _github: https://github.com/mattdeboard/Yuk
+.. _Yuk: http://yukmarks.com
 .. _flask_rage: http://mattdeboard.net/rage
 .. _Change: http://mattdeboard.net/change
 .. _trunkly-rss: https://github.com/mattdeboard/trunkly-rss
