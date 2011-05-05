@@ -1,3 +1,6 @@
+public: yes
+tags: [flask, web, python]
+
 ============
 Latest work
 ============
@@ -18,6 +21,7 @@ Since then, I've put in a few additional features, such as timestamps, tagging, 
 
 Yuk isn't done. It's really ugly, and there are some features on my back-of-a-napkin roadmap I'll be implementing this week. That being said I think I can start tightening my code up without it being "premature optimization." 
 
+.. _pinboard.in: http://pinboard.in
 .. _Yuk: http://yuk.mattdeboard.net
 .. _source: https://github.com/mattdeboard/Yuk
 .. _flask: http://flask.pocoo.org
