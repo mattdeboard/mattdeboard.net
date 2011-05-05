@@ -6,7 +6,7 @@
 <link href="/a/mattdeboard.net/blog/static/_pygments.css" rel="stylesheet" type="text/css"> 
 <link href="http://fonts.googleapis.com/css?family=Vollkorn&subset=latin" rel="stylesheet" type="text/css"> 
 <link href="http://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet" type="text/css">
-        <title>MattDeBoard.net - {% block title %}{% endblock %}</title>
+        <title>MattDeBoard.net - Blog Archive for 2010</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body><div id="main">
@@ -22,9 +22,17 @@
 	</div>
 
 	<div id="content">
-    {% block body %}{% endblock %}
+    
+
+  <h1>Blog <a href="/archive/">Archive</a> for 2010</h1>
+
+  <ul class=blog-archive>
+      <li><a href="/2010/12/">December</a>
+        — 1 entry
+  </ul>
+
 </div>
-{% if not source_filename %}
+
 <div id="side"><div id="trunkly_div">
 <center><span class="menu"><a id="trunkly-link" href="http://trunk.ly/mattdeboard/">What I'm reading:</a></span></center></div>
    <span class="side"><ul id="trunkly_link_list"></ul></span>
@@ -34,26 +42,11 @@
     src="http://trunk.ly/api/v1/links/mattdeboard/?count=5&callback=trunklyCallback"
     type="text/javascript">
 </script></div>
-{% endif %}
+
 
 <div id="footer"><span class="foot"></span></div>
 
-      {% if source_filename %}
-        {% if source_filename.split('/')[0].isdigit() %}
-        <div id="disqus_thread"></div>
-          <script type="text/javascript">
-            var disqus_shortname = 'mattdeboard';
-
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-          </script>
-          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-          <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-        {% endif %}
-      {% endif %}
+      
 
 </div>
     </body>

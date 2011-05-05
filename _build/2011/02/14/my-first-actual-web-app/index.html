@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head>
+
+
+<link href="/a/mattdeboard.net/blog/static/style.css" rel="stylesheet" type="text/css"> 
+<link href="/a/mattdeboard.net/blog/static/_pygments.css" rel="stylesheet" type="text/css"> 
+<link href="http://fonts.googleapis.com/css?family=Vollkorn&subset=latin" rel="stylesheet" type="text/css"> 
+<link href="http://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet" type="text/css">
+        <title>MattDeBoard.net - Latest work</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body><div id="main">
+	<div id="header"><span class="header"><a href="http://mattdeboard.net">Matt DeBoard</a></span></div>
+
+	<div id="menu"><span class="menu">
+		<a href="http://mattdeboard.net/projects/">projects</a> | 
+		<a href="http://twitter.com/#%21/matt_deboard" target="_blank">twitter</a> | 
+		<a href="https://github.com/mattdeboard" target="_blank">github</a> | 
+		<a href="http://mattdeboard.tumblr.com" target="_blank">tumblr archives</a> | 
+		<a href="http://mattdeboard.net/feed.atom" target="_blank">rss feed</a> |
+			</span>
+	</div>
+
+	<div id="content">
+    
+  <h1 class="title">Latest work</h1>
+
+  
+  <p class=date>written on Monday, February 14, 2011
+  
+
+  <p>I have put my latest project live. I started <a class="reference external" href="http://yuk.mattdeboard.net">Yuk</a> (<a class="reference external" href="https://github.com/mattdeboard/Yuk">source</a>) a couple of weeks ago as an exercise in developing an understanding of an MVC web framework, instead of using <a class="reference external" href="http://flask.pocoo.org">flask</a> for everything. flask is great, but not knowing Django (and more importantly, Django's underlying principles) is a huge knowledge gap I wanted to address.</p>
+<p>So, Yuk. The least important point first: The name is stupid. Since Yuk is a bookmarking service, I thought it would be cute to play off &quot;delicious&quot; with ... well, you get it. Dumb idea. &quot;Rebranding&quot; isn't really a priority though.</p>
+<p>Though the name was a play off &quot;del.icio.us&quot;, I have actually written the site using <a class="reference external" href="http://pinboard.in">pinboard.in</a> as a model, at least in terms of features and design. Pinboard is a really fast, dead simple bookmark service with a lot of great features that don't overshadow/obscure the site's core functionality. Having a model to base my work on has been very helpful.</p>
+<p>My first task was to set about getting Yuk's own core functionality -- saving user-defined URLs to a database -- working. For the framework I chose Django, and for the database I chose sqlite3, for simplicity. An additional point to this project was to gain familiarity with databases, especially how to design them so that model relations not only work, but make sense. I've still got a long, long way to go on this point. Be that as it may, as I said I chose sqlite3 for simplicity (simplicity being a codeword for what the Django docs recommended for a small project). It is fine for my uses and has been a great hands-on exercise.</p>
+<p>One side effect of this project was finally getting a handle on Python classes. Since I'd never undertaken a project that called for them, I'd never really understood what they were for/why they would be used. That is, I could implement a class by regurgitating I'd read -- the 'self' concept, the __init__ function, and so forth -- but I wouldn't actually understand. However, because of some of the details of implementing a bookmarking service, I have had the opportunity to define classes, subclasses, overwrite functions, and so forth within Django's MVC structure. If I learned absolutely nothing else, the time I've spent on this project would have been worth it simply for having a reason to implement classes.</p>
+<p>After nailing down storing bookmarks to the database, then came user registration/accounts. I don't have much to say about this since Django core and the <a class="reference external" href="http://code.google.com/p/django-registration/">django-registration</a> app make it ridiculously simple. I still need to customize the URL config for the registration/login/logout views, but since it works so well right out of the box, it has been a low priority.</p>
+<p>Since then, I've put in a few additional features, such as timestamps, tagging, RSS importing (a chance to reuse <a class="reference external" href="https://github.com/mattdeboard/trunkly-rss">some code</a> I'd written for another self-learning <a class="reference external" href="http://mattdeboard.net/2010/12/27/Taking-initiative-and-offering-assistance">project</a>), editing and deleting. Thanks to that last item, I finally wrote some JavaScript, thanks to the JQuery library. It's not impressive code but it works, and enhances the UI (though in kind of a hacky fashion).</p>
+<p>Yuk isn't done. It's really ugly, and there are some features on my back-of-a-napkin roadmap I'll be implementing this week. That being said I think I can start tightening my code up without it being &quot;premature optimization.&quot;</p>
+
+
+  
+  <p class=tags>This entry was tagged
+    
+      <a href="/tags/flask/">flask</a>, 
+      <a href="/tags/python/">python</a> and 
+      <a href="/tags/web/">web</a>
+  
+
+</div>
+
+
+<div id="footer"><span class="foot"></span></div>
+
+      
+        
+        <div id="disqus_thread"></div>
+          <script type="text/javascript">
+            var disqus_shortname = 'mattdeboard';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+      
+
+</div>
+    </body>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12348858-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</html>

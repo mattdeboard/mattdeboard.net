@@ -12,7 +12,7 @@ They are listed in chronological order with the most recent projects first.
 Links
 -----
 
-`Yuk`_(`Live example`_): A pinboard clone I started explicitly to learn more about databases and get my feet wet with Django.
+`Yuk`_ (`Live example`_): A pinboard clone I started explicitly to learn more about databases and get my feet wet with Django.
 
 `flask_rage`_: A simple text overlay I wrote just as a joke for some friends. I recently refactored the project for use with flask. This project taught me quite a lot about apache and nginx configs.
 

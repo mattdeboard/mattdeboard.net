@@ -6,7 +6,7 @@
 <link href="/a/mattdeboard.net/blog/static/_pygments.css" rel="stylesheet" type="text/css"> 
 <link href="http://fonts.googleapis.com/css?family=Vollkorn&subset=latin" rel="stylesheet" type="text/css"> 
 <link href="http://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet" type="text/css">
-        <title>MattDeBoard.net - {% block title %}{% endblock %}</title>
+        <title>MattDeBoard.net - No More Tumblr</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body><div id="main">
@@ -22,24 +22,32 @@
 	</div>
 
 	<div id="content">
-    {% block body %}{% endblock %}
+    
+  <h1 class="title">No More Tumblr</h1>
+
+  
+  <p class=date>written on Thursday, January 27, 2011
+  
+
+  <p>A week or two ago I decided to stop using Tumblr and &quot;roll my own&quot; blog. Since I've been using <a class="reference external" href="http://flask.pocoo.org">flask</a> to put <a class="reference external" href="http://mattdeboard.net/projects">some projects</a> on the web, I decided to give <a class="reference external" href="https://github.com/mitsuhiko/rstblog">rstblog</a> a go. (Both written by the <a class="reference external" href="http://lucumr.pocoo.org">same guy</a>.)</p>
+<p>rstblog is very much a very &quot;small&quot; blog app, with only very minimal documentation. Thankfully <a class="reference external" href="http://sbhr.dk/2010/11/30/using_rstblog/">Morten Siebuhr</a> put together a nice beginner's course on how to implement it. I referenced it heavily, though there were still some bumps on the road. Mostly, it took me awhile to realize you have to rm -r _build/ everytime you run-rstblog build. I was wondering why all of my links weren't updating; it was because when you do &quot;run-rstblog build&quot;, it only seems to create templates that already exist. I don't have a great explanation. But if you're looking for rstblog tips, here's mine: rm -r _build/ every time you run-rstblog build.</p>
+<p>I have also added a link to select projects in the header and generally cleaned and centralized everything.</p>
+<p>Getting my blog in a somewhat finalized form also marks the end of the beginning of my movement toward setting up my own web server to function as a place to host my own projects, including the blog. I realize for most people who will read this running a webserver isn't that big a deal, and maybe even something you were doing in high school or before. But for me, this has been a new thing and a tremendous learning experience. Much thanks to Brett Hoerner for his <a class="reference external" href="http://bretthoerner.com/2008/10/9/configs-for-nginx-and-apache-mod-wsgi">post on configuring Apache2 and nginx</a> for mod_wsgi. They've been a great reference source as I fumble with those two services.</p>
+
+
+  
+  <p class=tags>This entry was tagged
+    
+      <a href="/tags/rstblog/">rstblog</a>
+  
+
 </div>
-{% if not source_filename %}
-<div id="side"><div id="trunkly_div">
-<center><span class="menu"><a id="trunkly-link" href="http://trunk.ly/mattdeboard/">What I'm reading:</a></span></center></div>
-   <span class="side"><ul id="trunkly_link_list"></ul></span>
-<script src="http://trunk.ly/static/blogger.js"
-    type="text/javascript"></script>
-<script
-    src="http://trunk.ly/api/v1/links/mattdeboard/?count=5&callback=trunklyCallback"
-    type="text/javascript">
-</script></div>
-{% endif %}
+
 
 <div id="footer"><span class="foot"></span></div>
 
-      {% if source_filename %}
-        {% if source_filename.split('/')[0].isdigit() %}
+      
+        
         <div id="disqus_thread"></div>
           <script type="text/javascript">
             var disqus_shortname = 'mattdeboard';
@@ -52,8 +60,8 @@
           </script>
           <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
           <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-        {% endif %}
-      {% endif %}
+        
+      
 
 </div>
     </body>

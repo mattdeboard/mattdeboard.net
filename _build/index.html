@@ -6,7 +6,7 @@
 <link href="/a/mattdeboard.net/blog/static/_pygments.css" rel="stylesheet" type="text/css"> 
 <link href="http://fonts.googleapis.com/css?family=Vollkorn&subset=latin" rel="stylesheet" type="text/css"> 
 <link href="http://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet" type="text/css">
-        <title>MattDeBoard.net - {% block title %}{% endblock %}</title>
+        <title>MattDeBoard.net - Blog</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body><div id="main">
@@ -22,9 +22,53 @@
 	</div>
 
 	<div id="content">
-    {% block body %}{% endblock %}
+    
+  <div class=entry-overview>
+    <div class=date>Mar 16, 2011</div>
+    <div class=detail>
+      <h1><a href="/2011/03/16/setting-up-python-tesseract-on-ubuntu">Untitled</a></h1>
+      
+    </div>
+  </div>
+  <div class=entry-overview>
+    <div class=date>Mar 16, 2011</div>
+    <div class=detail>
+      <h1><a href="/2011/03/16/setting-up-python-tesseract-on-ubuntu"></a></h1>
+      
+    </div>
+  </div>
+  <div class=entry-overview>
+    <div class=date>Feb 14, 2011</div>
+    <div class=detail>
+      <h1><a href="/2011/02/14/my-first-actual-web-app">Latest work</a></h1>
+      
+    </div>
+  </div>
+  <div class=entry-overview>
+    <div class=date>Jan 27, 2011</div>
+    <div class=detail>
+      <h1><a href="/2011/01/27/new-blog">No More Tumblr</a></h1>
+      
+      <div class=summary><p>New blog, some new projects.</p>
 </div>
-{% if not source_filename %}
+      
+    </div>
+  </div>
+  <div class=entry-overview>
+    <div class=date>Dec 27, 2010</div>
+    <div class=detail>
+      <h1><a href="/2010/12/27/Taking-initiative-and-offering-assistance">Initiative and Assistance</a></h1>
+      
+      <div class=summary><p>A recap of my work with Trunk.ly.</p>
+</div>
+      
+    </div>
+  </div>  
+
+   
+
+</div>
+
 <div id="side"><div id="trunkly_div">
 <center><span class="menu"><a id="trunkly-link" href="http://trunk.ly/mattdeboard/">What I'm reading:</a></span></center></div>
    <span class="side"><ul id="trunkly_link_list"></ul></span>
@@ -34,26 +78,11 @@
     src="http://trunk.ly/api/v1/links/mattdeboard/?count=5&callback=trunklyCallback"
     type="text/javascript">
 </script></div>
-{% endif %}
+
 
 <div id="footer"><span class="foot"></span></div>
 
-      {% if source_filename %}
-        {% if source_filename.split('/')[0].isdigit() %}
-        <div id="disqus_thread"></div>
-          <script type="text/javascript">
-            var disqus_shortname = 'mattdeboard';
-
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-          </script>
-          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-          <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-        {% endif %}
-      {% endif %}
+      
 
 </div>
     </body>

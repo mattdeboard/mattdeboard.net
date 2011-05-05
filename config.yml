@@ -1,5 +1,6 @@
-active_modules:
-  - tags
-  - blog
+active_modules: [pygments, tags, blog]
 author: <a href="http://mattdeboard.net">Matt DeBoard</a>
 canonical_url: http://mattdeboard.net
+modules:
+  pygments:
+    style: tango
