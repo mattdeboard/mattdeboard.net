@@ -60,8 +60,27 @@ The above code is exactly what it looks like: a number of semicolon-separated sh
 
 Stop typing so much. Fabric makes things ridiculously easy.
 
+**Edit 5/8/11**: I actually reduced the complexity of my update_index() fabfile function quite a bit. I was doing a lot of really stupid chowning back and forth, which I've now fixed. Old:
 
-**p.s.** In addition to Fabric, you'll definitely want to incorporate cron & creative use of your Makefile to make your life easier. Consult `the github repo <https://github.com/mattdeboard/Yuk.git>`_ for Yukmarks.
+.. sourcecode:: python
+
+  def update_search():
+      run("cd %s; . bin/activate; cd %s; sudo chown matt:matt %s; sudo chown matt"	 	
+      ":matt %s*; ./manage.py update_index; sudo chown www-data:www-data %s; "
+      "sudo chown www-data:www-data %s*; sudo /etc/init.d/apache2 force-reloa"
+      "d" % (domain_dir, appdir, whoosh_dir, 
+             whoosh_dir, whoosh_dir, whoosh_dir))
+
+New:
+
+.. sourcecode:: python
+ 
+ def update_search():
+     run("sudo -u www-data /a/mattdeboard.net/bin/python %smanage.py update_inde"
+         "x; sudo /etc/init.d/apache2 force-reload" % appdir)
+
+
+**p.s.** In addition to Fabric, you'll definitely want to incorporate cron & creative use of your Makefile to make your life easier. Consult `the github repo <https://github.com/mattdeboard/Yuk>`_ for Yukmarks.
 
 
 
