@@ -90,8 +90,14 @@ li a:hover {
 
 #entry h2 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     font-style: bold;
+}
+
+#entry h3 {
+    font-size: 1.3em;
+    margin-bottom: .5em;
+    font-style: italic;
 }
 
 /*entry title*/
@@ -143,8 +149,13 @@ h1.title {
     font-size: 20px;
 }
 
+tt {
+    font-size: 14px;
+    color: #4070a0;
+}
+
 /*pygments style*/
-.highlight { background-color: #ececec }
+.highlight { background-color: #ececec; font-size: 14px }
 .hll { background-color: #ffffcc }
 .c { color: #60a0b0; font-style: italic } /* Comment */
 .err { border: 1px solid #FF0000 } /* Error */

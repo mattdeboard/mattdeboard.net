@@ -280,7 +280,8 @@ li a:hover {color:#24b200;border-bottom:1px dotted;}
 #entry .date {font-style:italic;font-size:14px;}
 #entry a {color:#24b200;border-bottom:1px dotted;}
 #entry a:hover {color:#99FE80;border-bottom:1px solid;}
-#entry h2 {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-style:bold;}
+#entry h2 {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:24px;font-style:bold;}
+#entry h3 {font-size:1.3em;margin-bottom:.5em;font-style:italic;}
 h1.title {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:40px;font-style:bold;padding-bottom:10px;}
 #main {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;letter-spacing:1px;}
 .detail a {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;letter-spacing:1px;color:#0C7500;}
@@ -289,7 +290,8 @@ h1.title {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:4
 .detail .summary {font-family:Times New Roman, Garamond, serif;font-size:18px;}
 .side a {color:#575757;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;}
 .tags {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;}
-.highlight {background-color:#ececec
+tt {font-size:14px;color:#4070a0;}
+.highlight {background-color:#ececec;font-size:14px
 ;}
 .hll {background-color:#ffffcc
 ;}

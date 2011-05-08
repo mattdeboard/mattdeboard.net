@@ -55,7 +55,7 @@ To make Fabric work, you just import the API and you're off:
 
 The above code is exactly what it looks like: a number of semicolon-separated shell commands. It's probably the most idiot-proof, time-saving thing I've ever used. Please see the below:
 
-.. image:: ./GRAPH.png
+.. image:: /static/GRAPH.png
    :alt: Curiously, coding in Java while flying an airplane moves both dots toward the center.
 
 Stop typing so much. Fabric makes things ridiculously easy.
