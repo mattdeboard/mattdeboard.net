@@ -14,7 +14,7 @@ Before I go any further, I want to thank `Morten Siebuhr <http://sbhr.dk>`_, who
 Some background
 ---------------
 
-First, rstblog is so called because it is powered by `reStructuredText <http://docutils.sourceforge.net/rst.html>`_, a very powerful, easy-to-grok markup syntax. (It's right up there with `Fabric <http://fabfile.org/>`_ on my `"Idiot-Proof/Time-Saving" graph <http://mattdeboard.net/static/GRAPH.png>`_.) I never realized how pervasive rst is, until I decided to rstblog from from `Tumblr <http://tumblr.com>`_. Using Armin's blog platform (which he calls a `"Not-invented-here <http://en.wikipedia.org/wiki/Not_Invented_Here>`_ site generator") has paid dividends just in terms of the knowledge of rst I've been forced to acquire.
+First, rstblog is so called because it is powered by `reStructuredText <http://docutils.sourceforge.net/rst.html>`_, a very powerful, easy-to-grok markup syntax. (It's right up there with `Fabric <http://fabfile.org/>`_ on my `"Idiot-Proof/Time-Saving" graph <http://mattdeboard.net/static/GRAPH.png>`_.) I never realized how pervasive rst is, until I decided to move to rstblog from `Tumblr <http://tumblr.com>`_. Using Armin's blog platform (which he calls a `"Not-invented-here <http://en.wikipedia.org/wiki/Not_Invented_Here>`_ site generator") has paid dividends just in terms of the knowledge of rst I've been forced to acquire.
 
 Some other concepts & tech with which I've had to get familiar in support of rstblog:
   1. `YAML <http://www.yaml.org/spec/1.2/spec.html>`_ - Specifically, getting a grip on how finicky it can be about whitespace.
@@ -75,7 +75,9 @@ I found that when I accidentally created unwanted blog entries as described abov
 CSS & syntax highlighting
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As you may be able to tell, I'm as excited as a puppy who just found his penis about syntax highlighting in my blog posts. That's because recently figured out how to get it working using `Pygments <http://pygments.org/docs/quickstart/>`_ and CSS. But first a word about CSS: Use `Blueprint <http://blueprintcss.org>`_ for organizing and maintaining your CSS files. It makes things a million times easier. The finer points of Blueprint are beyond the scope of this post, but here is my bash alias I use every time I edit my CSS:
+As you may be able to tell, I'm as excited as a puppy who just found his penis about syntax highlighting in my blog posts. That's because I recently figured out how to get it working using `Pygments <http://pygments.org/docs/quickstart/>`_ and CSS. 
+
+A word about CSS: Use `Blueprint <http://blueprintcss.org>`_ for organizing and maintaining your CSS files. It makes things a million times easier once you get the hang of it. The finer points of Blueprint are beyond the scope of this post, but here is my bash alias I use to roll any CSS changes into my build:
 
 .. sourcecode:: bash
 
