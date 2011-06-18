@@ -22,4 +22,3 @@ entry:
 	echo "public: yes" >> $(ENTRY)
 	echo "tags: []" >> $(ENTRY)
 	echo "summary: " >> $(ENTRY)
-	open $(ENTRY)
