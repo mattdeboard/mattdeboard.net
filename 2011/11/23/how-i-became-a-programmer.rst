@@ -12,7 +12,7 @@ I posted a `very brief response <http://news.ycombinator.com/item?id=3268469>`_ 
 First, A Disclaimer or Two
 --------------------------
 
-Please note that this blog post is entitled, *How **I** Became a Programmer*, not, "How **You** Can Become a Programmer." I'm not a self-help guru or wise or even a particularly good programmer. I did, however, decide at an inflection point in my life to pursue something vigorously and it paid off. Any insights gleaned from my experience are yours to make on your own; I doubt I'll have much insight for your personal situation.
+Please note that this blog post is entitled, "How **I** Became a Programmer", not, "How **You** Can Become a Programmer." I'm not a self-help guru or wise or even a particularly good programmer. I did, however, decide at an inflection point in my life to pursue something vigorously and it paid off. Any insights gleaned from my experience are yours to make on your own; I doubt I'll have much insight for your personal situation.
 
 Also, after consulting with my girlfriend, my total time of dedicated effort to becoming a paid programmer was actually about 12 weeks, not ~10 as I stated in the post I linked to above. So, there you go.
 
