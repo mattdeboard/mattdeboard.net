@@ -1,35 +1,21 @@
 public: yes
 
+========
 Projects
 ========
 
-I am both a formal computer science student at `IUPUI <http://www.iupui.edu>`_ as well as an enthusiastic autodidact when it comes to programming and computer science. 
+I've linked my "major" (relatively speaking of course) projects below. If you're interested in seeing my contributions to existing open-source projects they're freely available on `my github <https://github.com/mattdeboard>`_. If you have any questions please contact me.
 
-The projects I've completed so far have for the most part but mostly meaningless to the world at large. I have linked to them below. The link is either to their location where they are hosted here on my server or to the github repo if unhosted. 
-
-They are listed in chronological order with the most recent projects first.
-
+-----
 Links
 -----
 
-Yuk_ (github_): A pinboard clone I started explicitly to learn more about databases and get my feet wet with Django.
+`Shrink-Link <https://github.com/mattdeboard/shrink-link>`_: A URL shortener written in Clojure using the `Noir <http://webnoir.org>`_ web framework and the `Korma <http://sqlkorma.com>`_ SQL DSL.
 
-`flask_rage`_: A simple text overlay I wrote just as a joke for some friends. I recently refactored the project for use with flask. This project taught me quite a lot about apache and nginx configs.
+`SavedSearch <https://github.com/DirectEmployers/saved-search>`_: Django plugin to extend the excellent `Haystack <http://haystacksearch.org>`_ app. It provides support for user-defined, persistent queries.
 
-Change_: A "make change out of this" project for my Computing I class. Obviously a canonical computer science project so I wanted to do something "cute" with it.
+`Yukmarks <http://yukmarks.com>`_ (`github <https://github.com/mattdeboard/yukproj>`_): A pinboard clone I started explicitly to learn more about databases and get my feet wet with Django. I still update and maintain it regularly. I also still use it, actually, almost a year later. Eating my own dog food and all that.
 
-trunkly-rss_: I wrote about this project here_. Visit `Trunk.ly`_.
+`Python-USDOL <https://github.com/mattdeboard/python-usdol>`_: Python wrapper for the US Dept. of Labor API. There's also a `Clojure variant <https://github.com/mattdeboard/clj-usdol>`_.
 
-PDF-processor_: A friend was doing some very routine work with PDFs for an internship. Wrote this to automate the work. Unfortunately he wasn't allowed to put it to use.
-
-`pf_random`_: A forum-spamming script. This was acually the first fully functional thing I ever completed. 
-
-.. _github: https://github.com/mattdeboard/Yuk
-.. _Yuk: http://yukmarks.com
-.. _flask_rage: http://mattdeboard.net/rage
-.. _Change: http://mattdeboard.net/change
-.. _trunkly-rss: https://github.com/mattdeboard/trunkly-rss
-.. _PDF-processor: https://github.com/mattdeboard/PDF-processor
-.. _pf_random: https://github.com/mattdeboard/pf_random
-.. _here: http://mattdeboard.net/2010/12/27/Taking-initiative-and-offering-assistance
-.. _Trunk.ly: http://trunk.ly
+`Admin-Sentry <https://github.com/mattdeboard/django-admin-sentry>`_: A Django plugin to provide better representation of the Django admin logs. Inspired by David Cramer's `Sentry <https://github.com/dcramer/django-sentry>`_.

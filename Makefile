@@ -11,7 +11,7 @@ serve:
 	run-rstblog serve
 
 upload:
-	scp -r _build/* server:/a/mattdeboard.net/root
+	scp -r _build/* matt1:/a/mattdeboard.net/root
 
 clean:
 	rm -rf _build/
