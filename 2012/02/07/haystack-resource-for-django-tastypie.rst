@@ -6,7 +6,7 @@ summary: A drop-in Haystack resource class for django-tastypie APIs.
 REST API for search results
 ===========================
 
-**Updated:** *So after talking with the author of Tastypie I added the* `SearchDeclarativeMetaclass` *to handle inheritance of the metaclass attributes I set on the* `SearchResource` *class. I almost entirely copied his* `ModelDeclarativeMetaclass` *and it seems to work. I've seen* `DeclarativeMetaclass` *when I dig into the guts of Django or Haystack; this is the first time I've ever actually made use of it -- not that I'm doing anything groundbreaking with it.*
+**Updated:** *So after talking with the author of Tastypie I added the* `SearchDeclarativeMetaclass` *and* `SearchOptions` *to handle inheritance of the metaclass attributes on* `SearchResource`. *I almost entirely copied his* `ModelDeclarativeMetaclass` *and it works well. In-house, we further subclass* `SearchResource` *to model our job postings data in our search index, and it works great.*
 
 So, first things first: `django-tastypie <https://github.com/toastdriven/django-tastypie>`_ is pretty great. If you're running a Django web application and want to expose your data via a REST API, tastypie will do it. I got everything up-and-running in just a few hours (95% reading, 5% writing).
 
@@ -21,9 +21,26 @@ Speaking of the documentation, there is an example `Resource` subclass in the do
   from haystack.query import SearchQuerySet, SQ
   
   from tastypie.bundle import Bundle
-  from tastypie.resources import Resource, DeclarativeMetaclass
+  from tastypie.resources import Resource
 
   
+  class SearchOptions(ResourceOptions):
+      # One of the great strengths of Haystack is its extensibility. We have
+      # subclassed many of Haystack's internal classes, including a subclass
+      # of SearchQuerySet. I did not want to be locked in to using Haystack's
+      # built-in SearchQuerySet nor its SQ object in this module, so I put in
+      # the ``query_object`` attribute on the metaclass.
+      resource_name = 'search'
+      object_class = SearchQuerySet
+      query_object = SQ
+      index_fields = []
+      # Override document_uid_field with whatever field in your index
+      # you use to uniquely identify a single document. This value will be
+      # used wherever the ModelResource references the ``pk`` kwarg.
+      document_uid_field = 'id'
+      lookup_sep = ','
+    
+
   class SearchDeclarativeMetaclass(DeclarativeMetaclass):
       def __new__(cls, name, bases, attrs):
           meta = attrs.get('Meta')
@@ -52,7 +69,7 @@ Speaking of the documentation, there is an example `Resource` subclass in the do
   
           return new_class
 
-  
+
   class SearchResource(Resource):
       """
       Blueprint for implementing an HTTP API to access documents in a
@@ -72,23 +89,7 @@ Speaking of the documentation, there is an example `Resource` subclass in the do
   
       """
       __metaclass__ = SearchDeclarativeMetaclass
-    
-      class Meta:
-          # One of the great strengths of Haystack is its extensibility. We have
-          # subclassed many of Haystack's internal classes, including a subclass
-          # of SearchQuerySet. I did not want to be locked in to using Haystack's
-          # built-in SearchQuerySet nor its SQ object in this module, so I put in
-          # the ``query_object`` attribute on the metaclass.
-          resource_name = 'search'
-          object_class = SearchQuerySet
-          query_object = SQ
-          index_fields = []
-          # Override document_uid_field with whatever field in your index
-          # you use to uniquely identify a single document. This value will be
-          # used wherever the ModelResource references the ``pk`` kwarg.
-          document_uid_field = 'id'
-          lookup_sep = ','
-  
+      
       def apply_filters(self, request, applicable_filters):
           objects = self.get_object_list(request)
   
