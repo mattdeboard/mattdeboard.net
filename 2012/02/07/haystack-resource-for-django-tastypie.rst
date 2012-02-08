@@ -158,7 +158,6 @@ Speaking of the documentation, there is an example `Resource` subclass in the do
               kwargs['pk'] = getattr(bundle_or_obj.obj, uid, '')
           else:
               kwargs['pk'] = getattr(bundle_or_obj, uid, '')
-                  
   
           if self._meta.api_name is not None:
               kwargs['api_name'] = self._meta.api_name
