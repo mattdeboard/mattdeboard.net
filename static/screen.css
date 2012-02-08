@@ -27,10 +27,11 @@ a img {border:none;}
 /* typography.css */
 html {font-size:100.01%;}
 body {font-size:75%;color:#222;background:white;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;}
+cite {font:12px 'Bitstream Vera Sans Mono','Courier',monospace !important;background-color:#F8F8FF !important;border: 1px solid #DEDEDE !important;padding:0 0.2em !important;}
 h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#333333;}
 h1 {font-size:7em;line-height:1;}
-h2 {font-size:14px;margin-bottom:0.75em;font-weight:bold;color:#0B2B44;}
-h3 {font-size:1.5em;line-height:1;margin-bottom:.1em;}
+h2 {font-size:18px;margin-bottom:0.75em;font-weight:bold;color:#0B2B44;text-decoration:underline;}
+h3 {font-size:16px;margin-bottom:0.75em;font-weight:bold;color:#0B2B44;}
 h4 {font-size:4em;line-height:.5;margin-bottom:.1em;color:#c6d729;}
 h5 {font-size:2em;font-weight:bold;margin-bottom:.1em;}
 h6 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
@@ -42,6 +43,9 @@ p .left {margin:1.5em 1.5em 1.5em 0;padding:0;}
 p .right {margin:1.5em 0 1.5em 1.5em;padding:0;}
 a {color:#0b2b44;text-decoration:none;}
 a:focus, a:hover {color:#a92323;}
+div#content p {font-size:1.2em;}
+div#content p a {border-bottom:1px dotted #0b2b44;}
+div#content p a:focus, div#content p a:hover {border-bottom:1px dotted #a92323;}
 .arrow {font-weight:bold;font-size:16px;color:#9c3839;}
 blockquote {margin:1.5em;color:#666666;font-style:italic;}
 strong font, dfn font {weight:bold;color:#111111;}
