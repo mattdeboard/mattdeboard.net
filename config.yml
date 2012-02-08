@@ -1,6 +1,7 @@
 active_modules: [pygments, tags, blog]
 author: <a href="http://mattdeboard.net">Matt DeBoard</a>
 canonical_url: http://mattdeboard.net/
+ignore_files: [.*, _*, config.yml, Makefile, README, resources.py]
 modules:
   pygments:
     style: tango
