@@ -6,6 +6,8 @@ summary: A drop-in Haystack resource class for django-tastypie APIs.
 REST API for search results
 ===========================
 
+**Updated:** *So after talking with the author of Tastypie I added the* `SearchDeclarativeMetaclass` *to handle inheritance of the metaclass attributes I set on the* `SearchResource` *class. I almost entirely copied his* `ModelDeclarativeMetaclass` *and it seems to work. I've seen* `DeclarativeMetaclass` *when I dig into the guts of Django or Haystack; this is the first time I've ever actually made use of it -- not that I'm doing anything groundbreaking with it.*
+
 So, first things first: `django-tastypie <https://github.com/toastdriven/django-tastypie>`_ is pretty great. If you're running a Django web application and want to expose your data via a REST API, tastypie will do it. I got everything up-and-running in just a few hours (95% reading, 5% writing).
 
 Tastypie -- written by `Daniel Lindsley <https://twitter.com/#!/daniellindsley>`_, the guy behind `django-haystack <http://haystacksearch.org>`_ -- uses a `Resource` class to handle all the API hairiness; it comes with a `ModelResource` subclass out of the box to provide an interface to a Django model & the ORM. If you want a better explanation, or want to know more, go `read the docs <http://django-tastypie.readthedocs.org/en/latest/index.html>`_.
@@ -19,8 +21,37 @@ Speaking of the documentation, there is an example `Resource` subclass in the do
   from haystack.query import SearchQuerySet, SQ
   
   from tastypie.bundle import Bundle
-  from tastypie.resources import Resource
+  from tastypie.resources import Resource, DeclarativeMetaclass
+
   
+  class SearchDeclarativeMetaclass(DeclarativeMetaclass):
+      def __new__(cls, name, bases, attrs):
+          meta = attrs.get('Meta')
+          new_class = super(SearchDeclarativeMetaclass, cls)\
+              .__new__(cls, name, bases, attrs)
+          include_fields = getattr(new_class._meta, 'fields', [])
+          excludes = getattr(new_class._meta, 'excludes', [])
+          field_names = new_class.base_fields.keys()
+          
+          for field_name in field_names:
+              if field_name == 'resource_uri':
+                  continue
+              if field_name in new_class.declared_fields:
+                  continue
+              if len(include_fields) and not field_name in include_fields:
+                  del(new_class.base_fields[field_name])
+              if len(excludes) and field_name in excludes:
+                  del(new_class.base_fields[field_name])
+  
+          if getattr(new_class._meta, 'include_absolute_url', True):
+              if not 'absolute_url' in new_class.base_fields:
+                  new_class.base_fields['absolute_url'] = fields.CharField(
+                      attribute='get_absolute_url', readonly=True)
+          elif 'absolute_url' in new_class.base_fields and not 'absolute_url' in attrs:
+              del(new_class.base_fields['absolute_url'])
+  
+          return new_class
+
   
   class SearchResource(Resource):
       """
@@ -40,6 +71,8 @@ Speaking of the documentation, there is an example `Resource` subclass in the do
          utilize any subclasses you may be using in your project.
   
       """
+      __metaclass__ = SearchDeclarativeMetaclass
+    
       class Meta:
           # One of the great strengths of Haystack is its extensibility. We have
           # subclassed many of Haystack's internal classes, including a subclass
