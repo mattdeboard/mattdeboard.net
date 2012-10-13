@@ -10,7 +10,7 @@ Anil Dash published `a blog post`_ today I think is a victim of a bad title: "Th
 
 I think the title is poor because programming will never be "blue collar." Anil knows that; he more or less admits it was basically caste-baiting in the first sentence of the final paragraph. Unfortunately, I think people reacted to the notion of a programmer being considered "blue collar" more than the *real* points I think he was trying to make. The tl;dr of Anil's blog post seems to be:
 
-1. A CS degree is overkill for most problems;
+1. A CS degree is overkill for most job openings
 2. The "tech community" (??) should be focused on creating lots of jobs, not entrepreneurship
 3. Huge amounts of good for people & business can be done by creating a vocational training program for software development
 
