@@ -20,7 +20,7 @@ As part of the communication process at work, devs maintain changelogs for some 
     * [#97](https://github.com/courseload/project/pull/97) - Improved widget performance by 3.8x
 
 
-At first, these were created by having devs also update `RELEASE NOTES.md` with each pull request. This distributed the workload, but it also made having multiple pull requests a big pain in the ass since the same file, usually the same line in the same file, was being modified by multiple pull requests. So we stopped that practice and instead moved to a hand-made `RELEASE NOTES.md` file, maintained by these de facto primaries. Obviously this is super annoying, and creates a lot of busy work. For months though, streamlining the process fell far down on the priority list until I just couldn't take it anymore, I knew there had to be a better way of dealing with this.
+At first, these were created by having devs also update `RELEASE NOTES.md` with each pull request. This distributed the workload, but it also made having multiple pull requests a big pain in the ass since the same file, usually the same line in the same file, was being modified by multiple pull requests. So we stopped that practice and instead moved to a hand-made `RELEASE NOTES.md` file, maintained by these de facto primaries. Obviously this kind of work is sub-optimal and ripe for automation. For months though, streamlining the process fell far down on the priority list until I just couldn't take it anymore. I knew there had to be a better way of dealing with this.
 
 git log
 =======
@@ -136,6 +136,15 @@ Or, specify an output file::
 
   $ ./release 1.7 HEAD ./RELEASE\ NOTES.md
 
-  
+Conclusion
+==========
 
+One additional step I took is to create a git alias for the git log command, but prettied up a bit, for when I want to just scan through the differences from one version to the next. If you'd like to do the same, add the following to the `[alias]` section of `~/.gitconfig`::
 
+  lm = log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %C(bold cyan)%s %Cgreen(%cr)%n%Creset%n - %b%n' --abbrev-commit --date=relative --merges
+
+You can also achieve the same effect by entering the following at the CLI::
+
+  git config --global alias.lm "log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %C(bold cyan)%s %Cgreen(%cr)%n%Creset%n - %b%n' --abbrev-commit --date=relative --merges"
+
+Please leave a comment if you have questions or spot an error. Thanks.
