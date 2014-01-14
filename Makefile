@@ -1,6 +1,5 @@
-SLUG=slugified-title
 FOLDER=`date +%Y/%m/%d/`
-ENTRY=$(FOLDER)$(SLUG).rst
+ENTRY=$(FOLDER)${SLUG}.rst
 
 build:
 	run-rstblog build
@@ -20,5 +19,5 @@ entry:
 	mkdir -p $(FOLDER)
 	touch $(ENTRY)
 	echo "public: yes" >> $(ENTRY)
-	echo "tags: []" >> $(ENTRY)
-	echo "summary: " >> $(ENTRY)
+	echo "tags: [${TAGS}]" >> $(ENTRY)
+	echo "summary: ${SUMMARY}" >> $(ENTRY)
