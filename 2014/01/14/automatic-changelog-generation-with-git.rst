@@ -89,7 +89,7 @@ By running the above `git log` command via `subprocess.check_output` I can finis
          return subprocess.check_output([
              "git",
              "log",
-             "--pretty=format:%s'" % fmt_string,
+             "--pretty=format:%s" % fmt_string,
              "--merges", "%s..%s" % (start_commit, end_commit)])
 
          
@@ -98,7 +98,7 @@ By running the above `git log` command via `subprocess.check_output` I can finis
            pull request number.
 
         """
-        ptn = r"Merge pull request #(\d+).*\n([^']*)'$"
+        ptn = r"Merge pull request #(\d+).*\n([^\n]*)'$"
         pairs = re.findall(ptn, msgs, re.MULTILINE)
         return [body.format(pr_num=pr_num) for pr_num, body in pairs]
 
