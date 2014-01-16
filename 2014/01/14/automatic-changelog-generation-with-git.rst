@@ -42,7 +42,7 @@ This git command gets us this info without a bunch of cruft::
 
 But let's get really close now to the desired final output::
   
-  git log --pretty=format'%s%n* [#{pr_num}](https://github.com/courseload/project/pull/{pr_num}) - %b)'
+  git log --pretty=format:'%s%n* [#{pr_num}](https://github.com/courseload/project/pull/{pr_num}) - %b)'
 
 Now, every merge commit appears as a two-line entry. The first is the merge commit message. The second is the pull request description. For bonus points ,the second line looks almost exactly like the changelog lines, except using Python string interpolation variables embedded in place of the PR number.
 
