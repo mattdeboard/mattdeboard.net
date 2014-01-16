@@ -9,7 +9,7 @@ Using git & Python to autogen changelogs
 Background
 ==========
 
-As part of the communication process at work, devs maintain changelogs for some of our projects. What these consist of is a single `RELEASE NOTES.md` file in the project root, which contains lines that look like::
+As part of the communication process at work, devs maintain changelogs for some of our projects. What these consist of is a single `RELEASE NOTES.md` file in the project root, where each each line is a Markdown hyperlink to the pull request that introduced the change. These pull request links are then grouped together by date of release. The changelog looks like::
 
     ## v1.7 2013/03/17
     * [#100](https://github.com/courseload/project/pull/100) - Finalized previously preliminary stuff
@@ -19,17 +19,18 @@ As part of the communication process at work, devs maintain changelogs for some 
     * [#98](https://github.com/courseload/project/pull/98) - Made dongles brighter.
     * [#97](https://github.com/courseload/project/pull/97) - Improved widget performance by 3.8x
 
+At first, these were created by having devs also update `RELEASE NOTES.md` with each pull request. This distributed the workload, but it also made having multiple pull requests a big pain in the ass since the same file, usually the same line in the same file, was being modified by multiple pull requests. So we stopped that practice and instead moved to a hand-made `RELEASE NOTES.md` file, maintained by these de facto primaries. Obviously this kind of work is sub-optimal and ripe for automation. For months though, streamlining the process fell far down on the priority list until I just couldn't take it anymore. 
 
-At first, these were created by having devs also update `RELEASE NOTES.md` with each pull request. This distributed the workload, but it also made having multiple pull requests a big pain in the ass since the same file, usually the same line in the same file, was being modified by multiple pull requests. So we stopped that practice and instead moved to a hand-made `RELEASE NOTES.md` file, maintained by these de facto primaries. Obviously this kind of work is sub-optimal and ripe for automation. For months though, streamlining the process fell far down on the priority list until I just couldn't take it anymore. I knew there had to be a better way of dealing with this.
+
 
 git log
 =======
 
-In order to automate this, I needed to massage git to give me only merge commits. We can do that with::
+When I am automating a repetitive task like this, my goal is to write as little code as possible. In thise case, that means massaging the output of `git log` to get me as close to the desired final format of the changelog lines as possible. In other words, I only want to output merge commits. We can do that with::
 
   git log --merges
 
-This is good, but it shows a lot of extra information I'd have to parse out. If you'll notice in my example above, the lines in `RELEASE NOTES.md` are formatted like ``[#<pull request number>](https://github.com/courseload/project/pull/<pull request number>) - <pull request description>``. So we notice right away we need two things from the git log:
+This is good, but it shows a lot of extra information I'd have to parse out. If you'll notice in my example above, the lines in `RELEASE NOTES.md` are formatted like ``[#<pull request number>](https://github.com/courseload/project/pull/<pull request number>) - <pull request description>``. So we notice right away we need two things from `git log`:
 
 1. The commit message of the merge. Think of this as the subject line of an email. We want this because this has the number of the pull request.
 
@@ -39,16 +40,22 @@ This git command gets us this info without a bunch of cruft::
 
   git log --pretty=format:'%s%n%b' --merges
 
+But let's get really close now to the desired final output::
+  
+  git log --pretty=format'%s%n* [#{pr_num}](https://github.com/courseload/project/pull/{pr_num}) - %b)'
+
+Now, every merge commit appears as a two-line entry. The first is the merge commit message. The second is the pull request description. For bonus points ,the second line looks almost exactly like the changelog lines, except using Python string interpolation variables embedded in place of the PR number.
+
 Python
 ======
 
 It's great that we have just the info we want, but I know we're also going to need to do two things:
 
-1. Parse out the pull request number
+1. Parse out the pull request number from the `git log` output, and
 
-2. Use it to create the changelog entry
+2. Use the PR number to create the changelog entry
 
-To do this I need to massage the ``git log`` output a bit more. I want it to return the lines pre-formatted, ready for Python to plug in the pull request number: 
+By running the above `git log` command via `subprocess.check_output` I can finish this up:
 
   .. sourcecode:: python
 
@@ -64,10 +71,9 @@ To do this I need to massage the ``git log`` output a bit more. I want it to ret
      and write the output to the release notes file, you would type the
      following:
      
-     `python release.py 1.0 1.2 -o file`
+     `python release.py 1.0 1.2 -f release_notes.md`
      
      """
-
      import os.path as op
      import re
      import subprocess
@@ -98,7 +104,10 @@ To do this I need to massage the ``git log`` output a bit more. I want it to ret
 
 
     def prepend(filename, lines):
-        """Write `lines` (i.e. release notes) to file `filename`."""
+        """Write `lines` (i.e. release notes) to file `filename`,
+        creating the file if it doesn't exist.
+
+        """
         if op.exists(filename):
             with open(filename, 'r+') as f:
                 first_line = f.read()
@@ -141,10 +150,16 @@ Conclusion
 
 One additional step I took is to create a git alias for the git log command, but prettied up a bit, for when I want to just scan through the differences from one version to the next. If you'd like to do the same, add the following to the `[alias]` section of `~/.gitconfig`::
 
-  lm = log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %C(bold cyan)%s %Cgreen(%cr)%n%Creset%n - %b%n' --abbrev-commit --date=relative --merges
+  lm = log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset \
+    -%C(yellow)%d%Creset %C(bold cyan)%s %Cgreen(%cr)%n%Creset%n - %b%n' \
+    --abbrev-commit --date=relative --merges
 
 You can also achieve the same effect by entering the following at the CLI::
 
-  git config --global alias.lm "log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %C(bold cyan)%s %Cgreen(%cr)%n%Creset%n - %b%n' --abbrev-commit --date=relative --merges"
+  git config --global alias.lm "log --pretty=format:'%Cred%h%Creset \
+    %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %C(bold cyan)%s \
+    %Cgreen(%cr)%n%Creset%n - %b%n' --abbrev-commit --date=relative --merges"
+
+(The escaped newlines aren't necessary, only including them to keep the line length down on the page.)
 
 Please leave a comment if you have questions or spot an error. Thanks.
