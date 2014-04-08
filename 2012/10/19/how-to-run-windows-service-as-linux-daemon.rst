@@ -23,7 +23,7 @@ Get It Running In 4 Steps
 
 Once you've got supervisor and mono installed, follow these steps:
 
-1. Create a supervisor file in `/etc/supervisor/conf.d/` with a descriptive name. We'll use `mysvc.conf`. 
+1. Create a supervisor file in `/etc/supervisor/conf.d/` with a descriptive name. We'll use `mysvc.conf`.
 2. Edit `mysvc.conf` so it looks similar to this\ :sup:`1,2`\ ::
 
      [program:mysvc]
@@ -33,13 +33,13 @@ Once you've got supervisor and mono installed, follow these steps:
      stdout_logfile=/home/someuser/mysvc/out.log
      redirect_stderr=true
 
-3. `sudo service supervisor stop`. Wait a beat\ :sup:`3`\ , then run `sudo service supervisor start`.
+3. `sudo service supervisor update`. This will reload the config file you edited above.
 4. To confirm that your process started, run `ps aux|grep mono`. You should see it in the process list.
 
 Conclusion
 ==========
 
-Hope this helps. Supervisor has a ton of different options for configuring how a process runs, it's worth it to RTFM. 
+Hope this helps. Supervisor has a ton of different options for configuring how a process runs, it's worth it to RTFM.
 
 
 Footnotes
@@ -48,5 +48,3 @@ Footnotes
 **1.** The directory specified in your `stdout_logfile` parameter must already exist. If you try to start the `mysvc` process without creating it, supervisor will throw an error. Also, the `user` parameter should be set to a user that has permissions to write to the directory where you're keeping the `stdout_logfile`. Please consult the relevant `supervisor docs <http://supervisord.org/configuration.html#program-x-section-values>`_ for more about users & processes.
 
 **2**. You must use the `--no-daemon` flag to avoid creation of the lockfile which indirectly allows supervisor to capture/redirect stdout/stderr to a logfile.
-
-**3.** If you run e.g. `sudo service supervisor stop && sudo service supervisor start` supervisor will throw an exception. Waiting about as long as it takes to type out the second half of that command is usually enough. Alternatively, you can try `sudo service supervisor restart` but in my experience that does not cause changes to or creation of conf files to be processed.
