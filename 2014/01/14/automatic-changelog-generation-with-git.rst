@@ -19,7 +19,7 @@ As part of the communication process at work, devs maintain changelogs for some 
     * [#98](https://github.com/courseload/project/pull/98) - Made dongles brighter.
     * [#97](https://github.com/courseload/project/pull/97) - Improved widget performance by 3.8x
 
-At first, these were created by having devs also update `RELEASE NOTES.md` with each pull request. This distributed the workload, but it also made having multiple pull requests a big pain in the ass since the same file, usually the same line in the same file, was being modified by multiple pull requests. So we stopped that practice and instead moved to a hand-made `RELEASE NOTES.md` file, maintained by these de facto primaries. Obviously this kind of work is sub-optimal and ripe for automation. For months though, streamlining the process fell far down on the priority list until I just couldn't take it anymore. 
+At first, these were created by having devs also update `RELEASE NOTES.md` with each pull request. This distributed the workload, but it also made having multiple pull requests a big pain in the ass since the same file, usually the same line in the same file, was being modified by multiple pull requests. So we stopped that practice and instead moved to a hand-made `RELEASE NOTES.md` file, maintained by these de facto primaries. Obviously this kind of work is sub-optimal and ripe for automation. For months though, streamlining the process fell far down on the priority list until I just couldn't take it anymore.
 
 
 
@@ -41,7 +41,7 @@ This git command gets us this info without a bunch of cruft::
   git log --pretty=format:'%s%n%b' --merges
 
 But let's get really close now to the desired final output::
-  
+
   git log --pretty=format:'%s%n* [#{pr_num}](https://github.com/courseload/project/pull/{pr_num}) - %b)'
 
 Now, every merge commit appears as a two-line entry. The first is the merge commit message. The second is the pull request description. For bonus points ,the second line looks almost exactly like the changelog lines, except using Python string interpolation variables embedded in place of the PR number.
@@ -55,59 +55,56 @@ It's great that we have just the info we want, but I know we're also going to ne
 
 2. Use the PR number to create the changelog entry
 
-By running the above `git log` command via `subprocess.check_output` I can finish this up:
+By running the above `git log` command via `subprocess.check_output` I can automate all this with `this script <https://gist.github.com/mattdeboard/68f7009e847e36e6c107>`_:
 
   .. sourcecode:: python
 
-     #!/usr/bin/env python
-     """This script generates release notes for each merged pull request from
-     git merge-commit messages.
-
-     Usage:
-
+    #!/usr/bin/env python
+    """This script generates release notes for each merged pull request from
+    git merge-commit messages.
+    Usage:
      `python release.py <start_commit> <end_commit> [--output {file,stdout}]`
+    For example, if you wanted to find the diff between version 1.0 and 1.2,
+    and write the output to the release notes file, you would type the
+    following:
+     `python release.py 1.0 1.2 -o file`
+    """
+    import os.path as op
+    import re
+    import subprocess
+    from collections import deque
 
-     For example, if you wanted to find the diff between version 1.0 and 1.2,
-     and write the output to the release notes file, you would type the
-     following:
-     
-     `python release.py 1.0 1.2 -f release_notes.md`
-     
-     """
-     import os.path as op
-     import re
-     import subprocess
+    PROJECT_URI = "https://github.com/foo/bar"
+
+    def commit_msgs(start_commit, end_commit):
+        """Run the git command that outputs the merge commits (both subject
+        and body) to stdout, and return the output.
+        """
+        fmt_string = ("'%s%n* [#{pr_num}]"
+                      "(" + PROJECT_URI + "/{pr_num}) - %b'")
+        return subprocess.check_output([
+            "git",
+            "log",
+            "--pretty=format:%s" % fmt_string,
+            "--merges", "%s..%s" % (start_commit, end_commit)])
 
 
-     def commit_msgs(start_commit, end_commit):
-         """Run the git command that outputs the merge commits (both subject
-         and body) to stdout, and return the output.
-
-         """
-         fmt_string = ("'%s%n* [#{pr_num}]"
-                       "(https://github.com/courseload/project/pull/{pr_num}) - %b")
-         return subprocess.check_output([
-             "git",
-             "log",
-             "--pretty=format:%s" % fmt_string,
-             "--merges", "%s..%s" % (start_commit, end_commit)])
-
-         
     def release_note_lines(msgs):
         """Parse the lines from git output and format the strings using the
-           pull request number.
-
+        pull request number.
         """
         ptn = r"Merge pull request #(\d+).*\n([^\n]*)'$"
         pairs = re.findall(ptn, msgs, re.MULTILINE)
-        return [body.format(pr_num=pr_num) for pr_num, body in pairs]
+        return deque(body.format(pr_num=pr_num) for pr_num, body in pairs)
 
 
-    def prepend(filename, lines):
-        """Write `lines` (i.e. release notes) to file `filename`,
-        creating the file if it doesn't exist.
+    def release_header_line(version, release_date=None):
+        release_date = release_date or datetime.date.today().strftime('%Y/%m/%d')
+        return "## %s - %s" % (version, release_date)
 
-        """
+
+    def prepend(filename, lines, release_header=False):
+        """Write `lines` (i.e. release notes) to file `filename`."""
         if op.exists(filename):
             with open(filename, 'r+') as f:
                 first_line = f.read()
@@ -117,24 +114,34 @@ By running the above `git log` command via `subprocess.check_output` I can finis
             with open(filename, 'w') as f:
                 f.write(lines)
                 f.write('\n')
- 
+
 
     if __name__ == "__main__":
         import argparse
-        
+        import datetime
+
         parser = argparse.ArgumentParser()
         parser.add_argument('start_commit', metavar='START_COMMIT_OR_TAG')
         parser.add_argument('end_commit', metavar='END_COMMIT_OR_TAG')
         parser.add_argument('--filepath', '-f',
-                            help="Absolute path to output file.")           
+                            help="Absolute path to output file.")
+        parser.add_argument('--tag', '-t', metavar='NEW_TAG')
+        parser.add_argument(
+            '--date', '-d', metavar='RELEASE_DATE',
+            help="Date of release for listed patch notes. Use yyyy/mm/dd format.")
         args = parser.parse_args()
         start, end = args.start_commit, args.end_commit
-        lines = '\n'.join(release_note_lines(commit_msgs(start, end)))
+        lines = release_note_lines(commit_msgs(start, end))
+
+        if args.tag:
+            lines.appendleft(release_header_line(args.tag, args.date))
+
+        lines = '\n'.join(lines)
 
         if args.filepath:
             filename = op.abspath(args.filepath)
             prepend(filename, lines)
-        else: 
+        else:
             print lines
 
 To view the output in stdout, at the command line type::
